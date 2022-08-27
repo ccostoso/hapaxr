@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hapaxr</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Hapaxr</h1>
+        <h3>Enter a block of text below to see those words which only appear a given number of times.</h3>
+        <!-- <section class="row"> -->
+        <form class="row">
+            <!-- <div class="row"> -->
+            <div id="button-col" class="col s12 m2 valign-wrapper">
+                <a id="submit-btn" class="waves-effect waves-light btn">Analyze</a>
+            </div>
+            <div class="col s12 m10">
+                <div class="row">
+                    <div class="input-field col s12 m10">
+                        <input id="frequency-input" type="number" class="validate" value="1">
+                        <label for="frequency-input">Enter desired frequency here.</label>
+                        <p>
+                            If typing in a number, click anywhere on this page (outside the above input field) or hit <strong>Tab</strong> on your keyboard to complete
+                            input.
+                        </p>
+                        <p>Frequencies must be an <strong>integer greater than 1</strong>.</p>
+                    </div>
+                    <div class="input-field col s12 m10">
+                        <textarea id="text-input" class="materialize-textarea"></textarea>
+                        <label for="text-input">Input text for analysis here.</label>
+                    </div>
+                </div>
+
+            </div>
+            <!-- </div> -->
+        </form>
+        <!-- </section> -->
+        <h3>The following words appear in your text <strong id="frequency-display"></strong>.</h3>
+        <section id="results" class="row">
+
+        </section>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+</body>
+
+</html>
