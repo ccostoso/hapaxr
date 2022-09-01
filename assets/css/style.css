@@ -5,3 +5,7 @@ form.row {
 #button-col {
     max-height: 100%;
 }
+
+textarea {
+    max-height: 20rem !important;
+}
