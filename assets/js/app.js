@@ -1,10 +1,13 @@
-const submitBtnTwo = document.getElementById("submit-btn-two");
+const submitBtnFile = document.getElementById("submit-btn-file");
+const submitBtnTextarea = document.getElementById("submit-btn-textarea");
 const textInput = document.getElementById("textarea-input");
 const results = document.getElementById("results");
+
 const frequencyInput = document.getElementById("frequency-input");
 const frequencyDisplay = document.getElementById("frequency-display");
 
 let frequency = 1;
+let textFromFile = "";
 
 const renderFrequency = () => {
     const timeOrTimes = frequency === 1 ? 'time' : 'times';
@@ -77,16 +80,24 @@ const formatWord = word => {
     return word;
 }
 
-frequencyInput.addEventListener('change', e => {
+const resetLastSelected = () => {
+    lastSelected = 0;
+}
+
+const changeFrequencyCount = e => {
     e.preventDefault();
-
+    console.log(e.target.dataset);
+    console.log(`Frequency: ${frequency}`);
+    
     frequency = parseInt(frequencyInput.value);
-
+    
     if (frequency < 0) frequency *= -1;
     if (!frequency) frequency = 1;
-
+    
     renderFrequency();
-})
+}
+
+frequencyInput.addEventListener('change', changeFrequencyCount);
 
 frequencyInput.addEventListener('keydown', e => {
     if (e.key == 'Enter') {
@@ -96,7 +107,9 @@ frequencyInput.addEventListener('keydown', e => {
 
 const renderText = e => {
     e.preventDefault();
+
     let text = textInput.value;
+
     text = text.replace(/[^0-9a-zA-Z_\\-\\-\\.\\'\\’\\`]/g, ' ');
     text = text.replace(/[\.]/g, '');
     const textArr = text.split(' ');
@@ -108,6 +121,6 @@ const renderText = e => {
     renderResults(selectedWords);
 }
 
-submitBtnTwo.addEventListener('click', renderText);
+submitBtnTextarea.addEventListener('click', renderText);
 
 renderFrequency();
