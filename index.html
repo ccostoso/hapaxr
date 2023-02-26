@@ -17,47 +17,41 @@
         <h3>Enter a block of text below to see those words which only appear a given number of times.</h3>
         <section class="row">
             <section class="col s12 m6">
-                <form class="input-field col s12">
-                    <input id="frequency-input" type="number" class="validate" value="1">
-                    <label for="frequency-input">Enter desired frequency here.</label>
-                    <p>
-                        If typing in a number, click anywhere on this page (outside the above input field) or hit
-                        <strong>Tab</strong> on your keyboard to complete
-                        input.
-                    </p>
-                    <p>Frequencies must be an <strong>integer greater than 1</strong>.</p>
-                </form>
+                <p class="center-align">You can upload a .txt file to analyze...</p>
                 <form class="input-field col s12">
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>File</span>
-                            <input type="file">
+                            <input type="file" accept=".txt">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" />
                         </div>
                     </div>
                 </form>
-                <a id="submit-btn"
-                    class="waves-effect waves-light btn center-align col s12 offset-s0 m6 offset-m3">Analyze</a>
             </section>
             <form class="col s12 m6">
-                <div class="input-field col s12">
-                    <input id="frequency-input" type="number" class="validate" value="1">
-                    <label for="frequency-input">Enter desired frequency here.</label>
-                    <p>
-                        If typing in a number, click anywhere on this page (outside the above input field) or hit
-                        <strong>Tab</strong> on your keyboard to complete
-                        input.
-                    </p>
-                    <p>Frequencies must be an <strong>integer greater than 1</strong>.</p>
-                </div>
+                <p class="center-align">...or, you can copy and paste text to analyze.</p>
                 <div class="input-field col s12 m12">
                     <textarea id="textarea-input" class="materialize-textarea"></textarea>
                     <label for="text-input">Input text for analysis here.</label>
                 </div>
-                <a id="submit-btn"
-                    class="waves-effect waves-light btn center-align col s12 offset-s0 m6 offset-m3">Analyze</a>
+            </form>
+            <form class="input-field col s12">
+                <input id="frequency-input" type="number" class="validate" value="1">
+                <label for="frequency-input">Enter desired frequency here.</label>
+                <p>
+                    If typing in a number, click anywhere on this page (outside the above input field) or hit
+                    <strong>Tab</strong> on your keyboard to complete
+                    input.
+                </p>
+                <p>Frequencies must be an <strong>integer greater than 1</strong>.</p>
+                <a 
+                    id="submit-btn-two"
+                    class="waves-effect waves-light btn center-align col s12 offset-s0 m6 offset-m3"
+                >
+                    Analyze
+                </a>
             </form>
         </section>
         <h3>The following words appear in your text <strong id="frequency-display"></strong>.</h3>

@@ -1,5 +1,5 @@
-const submitBtn = document.getElementById("submit-btn");
-const textInput = document.getElementById("text-input");
+const submitBtnTwo = document.getElementById("submit-btn-two");
+const textInput = document.getElementById("textarea-input");
 const results = document.getElementById("results");
 const frequencyInput = document.getElementById("frequency-input");
 const frequencyDisplay = document.getElementById("frequency-display");
@@ -94,18 +94,20 @@ frequencyInput.addEventListener('keydown', e => {
     }
 })
 
-submitBtn.addEventListener('click', e => {
+const renderText = e => {
     e.preventDefault();
     let text = textInput.value;
     text = text.replace(/[^0-9a-zA-Z_\\-\\-\\.\\'\\’\\`]/g, ' ');
     text = text.replace(/[\.]/g, '');
     const textArr = text.split(' ');
-
+    
     const selectedWords = analyzeText(textArr, frequency);
-
+    
     selectedWords.sort();
-
+    
     renderResults(selectedWords);
-})
+}
+
+submitBtnTwo.addEventListener('click', renderText);
 
 renderFrequency();
