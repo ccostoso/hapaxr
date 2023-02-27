@@ -35,7 +35,7 @@
             <section class="col s12 m6">
                 <p class="center-align">...or, you can copy and paste text to analyze.</p>
                 <div class="input-field col s12 m12">
-                    <textarea id="textarea-input" class="materialize-textarea"></textarea>
+                    <textarea id="textarea-input" class="materialize-textarea" rows="8"></textarea>
                     <label for="text-input">Input text for analysis here.</label>
                 </div>
                 <form class="input-field col s12">
@@ -48,8 +48,8 @@
             <div class="row">
                 <div class="col s10 offset-s1">
                     <h5>Select the frequency desired for appearances of words in provided text.</h5>
-                    <input id="frequency-input" type="number" class="validate" value="1" data-input="textarea">
-                    <label for="frequency-input">Enter desired frequency here.</label>
+                    <input id="frequency-input" type="number" class="validate" value="1" min="1" data-input="textarea">
+                    <label for="frequency-input">Enter desired frequency. If typing a number, press <strong>Tab</strong> or click outisde of the above field to confirm input.</label>
                     <p>Frequencies must be an <strong>integer greater than 1</strong>.</p>
                 </div>
             </div>

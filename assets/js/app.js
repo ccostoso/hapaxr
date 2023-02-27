@@ -86,14 +86,13 @@ const resetLastSelected = () => {
 
 const changeFrequencyCount = e => {
     e.preventDefault();
-    console.log(e.target.dataset);
-    console.log(`Frequency: ${frequency}`);
     
     frequency = parseInt(frequencyInput.value);
     
     if (frequency < 0) frequency *= -1;
     if (!frequency) frequency = 1;
     
+    console.log(`Frequency: ${frequency}`);
     renderFrequency();
 }
 
