@@ -1,6 +1,8 @@
 const submitBtnFile = document.getElementById("submit-btn-file");
 const submitBtnTextarea = document.getElementById("submit-btn-textarea");
-const textInput = document.getElementById("textarea-input");
+const submitBtns = document.getElementsByClassName("submit-btn");
+const textareaInput = document.getElementById("textarea-input");
+const fileInput = document.getElementById("file-input");
 const results = document.getElementById("results");
 
 const frequencyInput = document.getElementById("frequency-input");
@@ -10,8 +12,10 @@ let frequency = 1;
 let textFromFile = "";
 
 const renderFrequency = () => {
-    const timeOrTimes = frequency === 1 ? 'time' : 'times';
-    frequencyDisplay.innerHTML = `${frequency} ${timeOrTimes}`;
+    const frequencyWords = ["once", "twice", "three", "four", "five", "six", "seven", "eight", "nine"];
+    let frequencyDescription = frequency > 9 ? `${frequency} times` : frequencyWords[frequency - 1];
+    if (frequency > 2 && frequency < 10) frequencyDescription += " times";
+    frequencyDisplay.innerHTML = `${frequencyDescription}`;
 }
 
 const renderResults = (arr) => {
@@ -70,10 +74,10 @@ const formatWord = word => {
     if (word.length > 2) {
         if (word.slice(-2).match(/[\\'\\’\\`][s]/g)) {
             word = word.slice(0, -2);
-            console.log(word);
+            // console.log(word);
         } else if (word.slice(-2).match(/[s][\\'\\’\\`]/g)) {
             word = word.slice(0, -1);
-            console.log(word);
+            // console.log(word);
         }
     }
 
@@ -86,12 +90,12 @@ const resetLastSelected = () => {
 
 const changeFrequencyCount = e => {
     e.preventDefault();
-    
+
     frequency = parseInt(frequencyInput.value);
-    
+
     if (frequency < 0) frequency *= -1;
     if (!frequency) frequency = 1;
-    
+
     console.log(`Frequency: ${frequency}`);
     renderFrequency();
 }
@@ -104,22 +108,41 @@ frequencyInput.addEventListener('keydown', e => {
     }
 })
 
-const renderText = e => {
+const readFileAsync = file => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            resolve(reader.result);
+        };
+
+        reader.onerror = reject;
+
+        reader.readAsText(file);
+    })
+}
+
+const renderText = async e => {
     e.preventDefault();
 
-    let text = textInput.value;
+    let text = e.target.dataset.button === "file" ? await readFileAsync(fileInput.files[0]) : textareaInput.value;
 
-    text = text.replace(/[^0-9a-zA-Z_\\-\\-\\.\\'\\’\\`]/g, ' ');
+    text = text.replace(/[^0-9a-zA-Z\u00C0-\u017F_\\-\\-\\.\\'\\’\\`]/g, ' ');
     text = text.replace(/[\.]/g, '');
+    text = text.replace(/\-\-/g, ' ');
     const textArr = text.split(' ');
-    
+
+    console.log(textArr);
+
     const selectedWords = analyzeText(textArr, frequency);
-    
+
     selectedWords.sort();
-    
+
     renderResults(selectedWords);
 }
 
-submitBtnTextarea.addEventListener('click', renderText);
+for (let button of submitBtns) {
+    button.addEventListener('click', renderText);
+}
 
 renderFrequency();

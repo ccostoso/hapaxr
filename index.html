@@ -22,15 +22,18 @@
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>File</span>
-                            <input type="file" accept=".txt">
+                            <input id="file-input" type="file" accept=".txt">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" />
                         </div>
                     </div>
                 </form>
-                <a id="submit-btn-file"
-                    class="waves-effect waves-light btn center-align col s12 offset-s0 m6 offset-m3">Analyze</a>
+                <a 
+                    id="submit-btn-file"
+                    class="waves-effect waves-light btn submit-btn center-align col s12 offset-s0 m6 offset-m3"
+                    data-button="file"
+                >Analyze</a>
             </section>
             <section class="col s12 m6">
                 <p class="center-align">...or, you can copy and paste text to analyze.</p>
@@ -39,16 +42,19 @@
                     <label for="text-input">Input text for analysis here.</label>
                 </div>
                 <form class="input-field col s12">
-                    <a id="submit-btn-textarea"
-                    class="waves-effect waves-light btn center-align col s12 offset-s0 m6 offset-m3">Analyze</a>
+                    <a 
+                        id="submit-btn-textarea"
+                        class="waves-effect waves-light btn submit-btn center-align col s12 offset-s0 m6 offset-m3"
+                        data-button="textarea"
+                    >Analyze</a>
                 </form>
             </section>
         </main>
         <section class="section z-depth-2">
             <div class="row">
                 <div class="col s10 offset-s1">
-                    <h5>Select the frequency desired for appearances of words in provided text.</h5>
-                    <input id="frequency-input" type="number" class="validate" value="1" min="1" data-input="textarea">
+                    <h5>Select a frequency to search for in your provided text.</h5>
+                    <input id="frequency-input" type="number" class="validate" value="1" min="1">
                     <label for="frequency-input">Enter desired frequency. If typing a number, press <strong>Tab</strong> or click outisde of the above field to confirm input.</label>
                     <p>Frequencies must be an <strong>integer greater than 1</strong>.</p>
                 </div>
