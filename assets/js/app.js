@@ -10,6 +10,7 @@ const frequencyDisplay = document.getElementById("frequency-display");
 
 let frequency = 1;
 let textFromFile = "";
+let text = "";
 
 const renderFrequency = () => {
     const frequencyWords = ["once", "twice", "three", "four", "five", "six", "seven", "eight", "nine"];
@@ -96,7 +97,7 @@ const changeFrequencyCount = e => {
     if (frequency < 0) frequency *= -1;
     if (!frequency) frequency = 1;
 
-    console.log(`Frequency: ${frequency}`);
+    // if (text) renderText();
     renderFrequency();
 }
 
@@ -125,7 +126,7 @@ const readFileAsync = file => {
 const renderText = async e => {
     e.preventDefault();
 
-    let text = e.target.dataset.button === "file" ? await readFileAsync(fileInput.files[0]) : textareaInput.value;
+    text = e.target.dataset.button === "file" ? await readFileAsync(fileInput.files[0]) : textareaInput.value;
 
     text = text.replace(/[^0-9a-zA-Z\u00C0-\u017F_\\-\\-\\.\\'\\’\\`]/g, ' ');
     text = text.replace(/[\.]/g, '');
