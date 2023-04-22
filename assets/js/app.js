@@ -96,9 +96,6 @@ const changeFrequencyCount = e => {
 
     if (frequency < 0) frequency *= -1;
     if (!frequency) frequency = 1;
-
-    // if (text) renderText();
-    renderFrequency();
 }
 
 frequencyInput.addEventListener('change', changeFrequencyCount);
@@ -139,6 +136,8 @@ const renderText = async e => {
 
     selectedWords.sort();
 
+    renderFrequency();
+    
     renderResults(selectedWords);
 }
 
